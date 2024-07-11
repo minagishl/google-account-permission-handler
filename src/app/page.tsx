@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { TextField, Button, Container, Box, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
+
+const urlPattern = /^https:\/\/.*\.google\.com\/.+$/;
 
 export default function Home() {
   const [formUrl, setFormUrl] = React.useState('');
@@ -10,7 +11,7 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const urlPattern = /^https:\/\/.*\.google\.com\/.+$/;
+
     if (!urlPattern.test(formUrl)) {
       alert('The URL must begin with https:// and end with .google.com.');
       return;
@@ -24,6 +25,12 @@ export default function Home() {
     const modifiedUrl = transformGoogleFormsUrl(
       formUrl.replace(/\/u\/\d+\//, '/')
     );
+
+    if (!urlPattern.test(modifiedUrl)) {
+      alert('The URL must begin with https:// and end with .google.com.');
+      return;
+    }
+
     router.push(modifiedUrl);
   };
 
@@ -39,45 +46,35 @@ export default function Home() {
   }
 
   return (
-    <main>
-      <Container
-        maxWidth="sm"
-        style={{
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-        }}
+    <main className="w-screen flex justify-center items-center">
+      <form
+        className="flex flex-col space-y-4 w-full max-w-md"
+        onSubmit={handleSubmit}
       >
-        <Typography variant="h5" component="h1" gutterBottom align="center">
-          URL input form
-        </Typography>
-        <form onSubmit={handleSubmit}>
-          <Box mb={2}>
-            <TextField
-              fullWidth
-              label="Google Form URL"
-              variant="outlined"
-              value={formUrl}
-              size="large"
-              onChange={(e) => setFormUrl(e.target.value)}
-            />
-          </Box>
-          <Box mb={2}>
-            <Button type="submit" variant="contained" color="primary" fullWidth>
-              Open account switching screen
-            </Button>
-          </Box>
-          <Button
-            type="button"
-            variant="outlined"
-            fullWidth
-            onClick={handleSecondaryButtonClick}
-          >
-            Automatically opens in an authorized account.
-          </Button>
-        </form>
-      </Container>
+        <div className="mb-6">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Default input
+          </label>
+          <input
+            type="text"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            onChange={(e) => setFormUrl(e.target.value)}
+          />
+        </div>
+        <button
+          type="submit"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        >
+          Open account switching screen
+        </button>
+        <button
+          type="button"
+          className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          onClick={handleSecondaryButtonClick}
+        >
+          Automatically opens in an authorized account.
+        </button>
+      </form>
     </main>
   );
 }
