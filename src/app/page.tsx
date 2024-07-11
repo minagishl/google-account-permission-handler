@@ -34,6 +34,12 @@ export default function Home() {
     router.push(modifiedUrl);
   };
 
+  const handleRedirect = () => {
+    router.push(
+      'https://github.com/minagishl/google-organization-account-permissions'
+    );
+  };
+
   function transformGoogleFormsUrl(url: string): string {
     const googleFormsPattern =
       /https:\/\/docs\.google\.com\/forms\/d\/e\/([a-zA-Z0-9_-]+)/;
@@ -46,35 +52,43 @@ export default function Home() {
   }
 
   return (
-    <main className="w-screen flex justify-center items-center">
+    <main className="w-screen h-screen flex justify-center items-center flex-col space-y-3 px-3">
       <form
-        className="flex flex-col space-y-4 w-full max-w-md"
+        className="flex flex-col w-full max-w-md space-y-4"
         onSubmit={handleSubmit}
       >
-        <div className="mb-6">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Default input
+        <div className="mb-3">
+          <label className="block text-sm font-medium dark:text-white">
+            <span className="sr-only">Full name</span>
           </label>
           <input
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             onChange={(e) => setFormUrl(e.target.value)}
+            type="text"
+            className="py-3 px-4 block w-full border-gray-200 border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="Google Form URL"
           />
         </div>
+
         <button
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
         >
           Open account switching screen
         </button>
         <button
           type="button"
-          className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
           onClick={handleSecondaryButtonClick}
         >
           Automatically opens in an authorized account.
         </button>
       </form>
+      <button
+        className="text-blue-600 decoration-2 hover:underline text-sm font-medium dark:text-blue-500"
+        onClick={handleRedirect}
+      >
+        Browse GitHub for usage instructions
+      </button>
     </main>
   );
 }
