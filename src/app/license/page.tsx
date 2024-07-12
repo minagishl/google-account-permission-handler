@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Container from '@/components/container';
 
 export default function License() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function License() {
   };
 
   return (
-    <main className="w-screen h-screen flex justify-center items-center flex-col space-y-3 px-3">
+    <Container>
       <div>
         <div className="border border-gray-200 p-4 rounded-lg space-y-4">
           <p className="text-sm font-medium">
@@ -29,6 +30,6 @@ export default function License() {
           </p>
         </div>
       </div>
-    </main>
+    </Container>
   );
 }

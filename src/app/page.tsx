@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Container from '@/components/container';
 
 const urlPattern = /^https:\/\/.*\.google\.com\/.+$/;
 
@@ -52,7 +53,7 @@ export default function Home() {
   }
 
   return (
-    <main className="w-screen h-screen flex justify-center items-center flex-col space-y-3 px-3">
+    <Container>
       <form
         className="flex flex-col w-full max-w-md space-y-4"
         onSubmit={handleSubmit}
@@ -93,6 +94,6 @@ export default function Home() {
             'Browse GitHub for usage instructions'}
         </button>
       )}
-    </main>
+    </Container>
   );
 }
