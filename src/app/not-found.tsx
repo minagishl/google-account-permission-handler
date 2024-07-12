@@ -1,56 +1,35 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+import Container from '@/components/container';
+
 export default function NotFound() {
+  const router = useRouter();
+
+  const handle = () => {
+    router.push(
+      `${process.env.NEXT_PUBLIC_GITHUB_URL}/blob/main/LICENSE` ?? '/'
+    );
+  };
+
   return (
-    <>
+    <Container>
       <title>404: This page could not be found.</title>
-      <div style={styles.error}>
-        <div>
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}`,
-            }}
-          />
-          <h1 className="next-error-h1" style={styles.h1}>
-            404
-          </h1>
-          <div style={styles.desc}>
-            <h2 style={styles.h2}>This page could not be found.</h2>
-          </div>
-        </div>
+      <div className="border border-gray-200 p-4 rounded-lg space-y-4 w-full max-w-sm">
+        <p className="text-sm font-medium">
+          This page could not be found.
+          <br />
+          Error code:{' '}
+          <span className="font-mono font-semibold">`NOT_FOUND`</span>
+          <br />
+          <button
+            className="text-blue-600 decoration-2 hover:underline dark:text-blue-500"
+            onClick={handle}
+          >
+            Back to Services
+          </button>
+        </p>
       </div>
-    </>
+    </Container>
   );
 }
-
-const styles = {
-  error: {
-    fontFamily:
-      'system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
-    height: '100vh',
-    textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  desc: {
-    display: 'inline-block',
-  },
-
-  h1: {
-    display: 'inline-block',
-    margin: '0 20px 0 0',
-    padding: '0 23px 0 0',
-    fontSize: 24,
-    fontWeight: 500,
-    verticalAlign: 'top',
-    lineHeight: '49px',
-  },
-
-  h2: {
-    fontSize: 14,
-    fontWeight: 400,
-    lineHeight: '49px',
-    margin: 0,
-  },
-} as const;
