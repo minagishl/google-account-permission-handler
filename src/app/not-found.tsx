@@ -7,9 +7,7 @@ export default function NotFound() {
   const router = useRouter();
 
   const handle = () => {
-    router.push(
-      `${process.env.NEXT_PUBLIC_GITHUB_URL}/blob/main/LICENSE` ?? '/'
-    );
+    router.push(window.location.origin);
   };
 
   return (
