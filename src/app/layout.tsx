@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
@@ -8,6 +9,10 @@ export const metadata: Metadata = {
   title: 'Google Organization Account Permissions',
   description:
     'Application to display correctly when displayed as only an organization account in Google Form, etc.',
+};
+
+export const viewport: Viewport = {
+  maximumScale: 1,
 };
 
 export default function RootLayout({
