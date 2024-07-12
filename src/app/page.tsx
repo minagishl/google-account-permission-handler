@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   const handleRedirect = () => {
-    router.push(process.env.NEXT_PUBLIC_GITHUB_URL ?? '/');
+    router.push(process.env.NEXT_PUBLIC_REDIRECT_URL ?? '/');
   };
 
   function transformGoogleFormsUrl(url: string): string {
@@ -50,6 +50,8 @@ export default function Home() {
     }
     return url;
   }
+
+  console.log(process.env.NEXT_PUBLIC_REDIRECT_HIDDEN);
 
   return (
     <main className="w-screen h-screen flex justify-center items-center flex-col space-y-3 px-3">
@@ -83,12 +85,15 @@ export default function Home() {
           Automatically opens in an authorized account.
         </button>
       </form>
-      <button
-        className="text-blue-600 decoration-2 hover:underline text-sm font-medium dark:text-blue-500"
-        onClick={handleRedirect}
-      >
-        Browse GitHub for usage instructions
-      </button>
+      {process.env.NEXT_PUBLIC_REDIRECT_HIDDEN !== 'true' && (
+        <button
+          className="text-blue-600 decoration-2 hover:underline text-sm font-medium dark:text-blue-500"
+          onClick={handleRedirect}
+        >
+          {process.env.NEXT_PUBLIC_REDIRECT_TEXT ??
+            'Browse GitHub for usage instructions'}
+        </button>
+      )}
     </main>
   );
 }
