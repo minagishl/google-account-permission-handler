@@ -42,6 +42,7 @@ export default function Home() {
   };
 
   function transformGoogleFormsUrl(url: string): string {
+    // It seems that you don't need to change anything except Google Form.
     const googleFormsPattern =
       /https:\/\/docs\.google\.com\/forms\/d\/e\/([a-zA-Z0-9_-]+)/;
     const match = url.match(googleFormsPattern);
