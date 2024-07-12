@@ -1,16 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 
 const urlPattern = /^https:\/\/.*\.google\.com\/.+$/;
 
 export default function Home() {
-  const [formUrl, setFormUrl] = React.useState('');
+  const formUrlRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const formUrl = formUrlRef.current?.value ?? '';
 
     if (!urlPattern.test(formUrl)) {
       alert('The URL must begin with https:// and end with .google.com.');
@@ -22,6 +23,7 @@ export default function Home() {
   };
 
   const handleSecondaryButtonClick = () => {
+    const formUrl = formUrlRef.current?.value ?? '';
     const modifiedUrl = transformGoogleFormsUrl(
       formUrl.replace(/\/u\/\d+\//, '/')
     );
@@ -60,7 +62,7 @@ export default function Home() {
             <span className="sr-only">Full name</span>
           </label>
           <input
-            onChange={(e) => setFormUrl(e.target.value)}
+            ref={formUrlRef}
             type="text"
             className="py-3 px-4 block w-full border-gray-200 border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
             placeholder="Google Form URL"
