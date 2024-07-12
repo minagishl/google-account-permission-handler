@@ -35,9 +35,7 @@ export default function Home() {
   };
 
   const handleRedirect = () => {
-    router.push(
-      'https://github.com/minagishl/google-organization-account-permissions'
-    );
+    router.push(process.env.NEXT_PUBLIC_GITHUB_URL ?? '/');
   };
 
   function transformGoogleFormsUrl(url: string): string {
