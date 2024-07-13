@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default function Announce() {
   if (
-    process.env.NEXT_PUBLIC_ANNOUNCEMENT_URL === 'true' ||
-    !process.env.NEXT_PUBLIC_ANNOUNCEMENT_URL
+    process.env.NEXT_PUBLIC_ANNOUNCEMENT_HIDDEN === 'true' ||
+    !process.env.NEXT_PUBLIC_ANNOUNCEMENT_HIDDEN
   ) {
     return null;
   }
