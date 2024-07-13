@@ -12,7 +12,8 @@ const button = tv({
   variants: {
     color: {
       primary: 'border-transparent bg-blue-600 text-white hover:bg-blue-700',
-      secondary: 'border-gray-200 bg-white text-gray-800 hover:bg-gray-50',
+      secondary:
+        'border-gray-200 bg-white text-gray-800 hover:bg-gray-50 dark:bg-neutral-900 dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-800',
     },
     font: {
       medium: 'font-medium',
@@ -90,16 +91,16 @@ export default function Home() {
             onChange={onChange}
             value={url}
             type="text"
-            className="block w-full rounded-lg border border-gray-200 px-4 py-3 pr-16 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+            className="block w-full rounded-lg border border-gray-200 px-4 py-3 pr-16 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
             placeholder="Please enter URL"
             autoComplete="off" // Disable autocomplete to prevent browser autofill
           />
           {url && (
             <div
-              className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer bg-white pl-1"
+              className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer bg-white pl-1 dark:bg-neutral-800"
               onClick={clearUrl}
             >
-              <div className="inline-flex items-center justify-center rounded bg-gray-50 px-2 py-1 text-sm font-medium text-gray-800 hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50">
+              <div className="inline-flex items-center justify-center rounded bg-gray-100 px-2 py-1 text-sm font-medium text-gray-800 hover:bg-gray-200 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-600 dark:text-white dark:hover:bg-neutral-700">
                 <p>Clear</p>
               </div>
             </div>

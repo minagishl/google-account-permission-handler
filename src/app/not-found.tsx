@@ -13,7 +13,7 @@ export default function NotFound() {
   return (
     <Container>
       <title>404: This page could not be found.</title>
-      <div className="w-full max-w-sm space-y-4 rounded-lg border border-gray-200 p-4">
+      <div className="w-full max-w-sm space-y-4 rounded-lg border border-gray-200 p-4 dark:border-neutral-700 dark:text-white">
         <p className="text-sm font-medium">
           This page could not be found.
           <br />
