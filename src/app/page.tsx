@@ -66,25 +66,25 @@ export default function Home() {
   return (
     <Container>
       <form
-        className="flex flex-col w-full max-w-md space-y-4"
+        className="flex w-full max-w-md flex-col space-y-4"
         onSubmit={handleSubmit}
       >
-        <div className="mb-3 relative">
+        <div className="relative mb-3">
           <input
             ref={formUrlRef}
             onChange={onChange}
             value={url}
             type="text"
-            className="py-3 px-4 block w-full border-gray-200 border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+            className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
             placeholder="Please enter URL"
             autoComplete="off" // Disable autocomplete to prevent browser autofill
           />
           {url && (
             <div
-              className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer pl-2 bg-white"
+              className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer bg-white pl-2"
               onClick={clearUrl}
             >
-              <div className="py-1 px-3 inline-flex justify-center items-center text-sm font-medium rounded bg-gray-50 text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
+              <div className="inline-flex items-center justify-center rounded bg-gray-50 px-3 py-1 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50">
                 <p>Clear</p>
               </div>
             </div>
@@ -93,13 +93,13 @@ export default function Home() {
 
         <button
           type="submit"
-          className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+          className="inline-flex items-center justify-center gap-x-2 rounded-lg border border-transparent bg-blue-600 px-4 py-3 text-sm font-semibold text-white hover:bg-blue-700 disabled:pointer-events-none disabled:opacity-50"
         >
           Open account switching screen
         </button>
         <button
           type="button"
-          className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+          className="inline-flex items-center justify-center gap-x-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50"
           onClick={handleSecondaryButtonClick}
         >
           Automatically opens in an authorized account
@@ -107,7 +107,7 @@ export default function Home() {
       </form>
       {process.env.NEXT_PUBLIC_REDIRECT_HIDDEN !== 'true' && (
         <button
-          className="text-blue-600 decoration-2 hover:underline text-sm font-medium dark:text-blue-500"
+          className="text-sm font-medium text-blue-600 decoration-2 hover:underline dark:text-blue-500"
           onClick={handleRedirect}
         >
           {process.env.NEXT_PUBLIC_REDIRECT_TEXT ??

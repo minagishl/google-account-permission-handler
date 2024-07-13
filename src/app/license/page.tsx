@@ -14,7 +14,7 @@ export default function License() {
 
   return (
     <Container>
-      <div className="border border-gray-200 p-4 rounded-lg space-y-4 w-full max-w-sm">
+      <div className="w-full max-w-sm space-y-4 rounded-lg border border-gray-200 p-4">
         <p className="text-sm font-medium">
           This website is open source
           <br />
