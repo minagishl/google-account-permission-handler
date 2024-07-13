@@ -88,6 +88,7 @@ export default function Home() {
       >
         <div className="relative mb-3">
           <input
+            tabIndex={1}
             onChange={onChange}
             value={url}
             type="text"
@@ -100,9 +101,12 @@ export default function Home() {
               className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer bg-white pl-1 dark:bg-neutral-900"
               onClick={clearUrl}
             >
-              <div className="inline-flex items-center justify-center rounded bg-gray-100 px-2 py-1 text-sm font-medium text-gray-800 hover:bg-gray-200 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-600 dark:text-white dark:hover:bg-neutral-700">
+              <button
+                tabIndex={2}
+                className="inline-flex items-center justify-center rounded bg-gray-100 px-2 py-1 text-sm font-medium text-gray-800 hover:bg-gray-200 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-600 dark:text-white dark:hover:bg-neutral-700"
+              >
                 <p>Clear</p>
-              </div>
+              </button>
             </div>
           )}
         </div>
@@ -125,7 +129,7 @@ export default function Home() {
       </form>
       {process.env.NEXT_PUBLIC_REDIRECT_HIDDEN !== 'true' && (
         <button
-          className="text-sm font-medium text-blue-600 decoration-2 hover:underline dark:text-blue-500"
+          className="px-2 text-sm font-medium text-blue-600 decoration-2 hover:underline dark:text-blue-500"
           onClick={handleRedirect}
         >
           {process.env.NEXT_PUBLIC_REDIRECT_TEXT ??
