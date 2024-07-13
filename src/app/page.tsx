@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { tv } from 'tailwind-variants';
 
@@ -24,58 +24,35 @@ const button = tv({
 const urlPattern = /^https:\/\/.*\.google\.com\/.+$/;
 
 export default function Home() {
-  const formUrlRef = useRef<HTMLInputElement>(null);
   const [clickButton, setClickButton] = useState<boolean>(false);
+  const [url, setUrl] = useState<string>('');
   const router = useRouter();
-
-  // Function to get URL from sessionStorage
-  const getUrl = () => {
-    return sessionStorage.getItem('url') || '';
-  };
-
-  // Function to save URL to sessionStorage
-  const setUrl = (value: string) => {
-    sessionStorage.setItem('url', value);
-  };
-
-  const [url, setUrlState] = useState(getUrl);
-
-  useEffect(() => {
-    setUrlState(getUrl());
-  }, []);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
-    setUrlState(e.target.value);
   };
 
   const clearUrl = () => {
     setUrl('');
-    setUrlState('');
-    formUrlRef.current?.focus();
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formUrl = formUrlRef.current?.value ?? '';
 
-    if (!urlPattern.test(formUrl)) {
+    if (!urlPattern.test(url)) {
       alert('The URL must begin with https:// and end with .google.com.');
       return;
     }
 
     setClickButton(true);
 
-    const encodedUrl = encodeURIComponent(transformGoogleFormsUrl(formUrl));
+    const encodedUrl = encodeURIComponent(transformGoogleFormsUrl(url));
     const newUrl = `https://accounts.google.com/AccountChooser?continue=${encodedUrl}`;
     router.push(newUrl);
   };
 
   const handleSecondaryButtonClick = () => {
-    const formUrl = formUrlRef.current?.value ?? '';
-    const modifiedUrl = transformGoogleFormsUrl(
-      formUrl.replace(/\/u\/\d+\//, '/')
-    );
+    const modifiedUrl = transformGoogleFormsUrl(url.replace(/\/u\/\d+\//, '/'));
 
     if (!urlPattern.test(modifiedUrl)) {
       alert('The URL must begin with https:// and end with .google.com.');
@@ -92,7 +69,6 @@ export default function Home() {
   };
 
   function transformGoogleFormsUrl(url: string): string {
-    // It seems that you don't need to change anything except Google Form.
     const googleFormsPattern =
       /https:\/\/docs\.google\.com\/forms\/d\/e\/([a-zA-Z0-9_-]+)/;
     const match = url.match(googleFormsPattern);
@@ -111,7 +87,6 @@ export default function Home() {
       >
         <div className="relative mb-3">
           <input
-            ref={formUrlRef}
             onChange={onChange}
             value={url}
             type="text"
@@ -134,20 +109,14 @@ export default function Home() {
         <button
           type="submit"
           disabled={clickButton}
-          className={button({
-            color: 'primary',
-            font: 'semibold',
-          })}
+          className={button({ color: 'primary', font: 'semibold' })}
         >
           Open account switching screen
         </button>
         <button
           type="button"
           disabled={clickButton}
-          className={button({
-            color: 'secondary',
-            font: 'medium',
-          })}
+          className={button({ color: 'secondary', font: 'medium' })}
           onClick={handleSecondaryButtonClick}
         >
           Automatically opens in an authorized account
