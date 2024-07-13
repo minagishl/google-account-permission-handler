@@ -60,9 +60,6 @@ export default function Home() {
         onSubmit={handleSubmit}
       >
         <div className="mb-3">
-          <label className="block text-sm font-medium dark:text-white">
-            <span className="sr-only">Full name</span>
-          </label>
           <input
             ref={formUrlRef}
             type="text"
