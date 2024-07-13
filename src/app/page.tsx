@@ -67,7 +67,7 @@ export default function Home() {
             placeholder="Please enter URL"
             autoComplete="off" // Disable autocomplete to prevent browser autofill
           />
-          <div className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer">
+          <div className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer pl-2 bg-white">
             <div className="py-1 px-3 inline-flex justify-center items-center text-sm font-medium rounded bg-gray-50 text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
               <p>Clear</p>
             </div>
