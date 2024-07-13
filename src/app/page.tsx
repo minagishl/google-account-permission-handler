@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { tv } from 'tailwind-variants';
 
@@ -25,16 +25,33 @@ const urlPattern = /^https:\/\/.*\.google\.com\/.+$/;
 
 export default function Home() {
   const formUrlRef = useRef<HTMLInputElement>(null);
-  const [url, setUrl] = useState('');
   const [clickButton, setClickButton] = useState<boolean>(false);
   const router = useRouter();
 
+  // Function to get URL from sessionStorage
+  const getUrl = () => {
+    return sessionStorage.getItem('url') || '';
+  };
+
+  // Function to save URL to sessionStorage
+  const setUrl = (value: string) => {
+    sessionStorage.setItem('url', value);
+  };
+
+  const [url, setUrlState] = useState(getUrl);
+
+  useEffect(() => {
+    setUrlState(getUrl());
+  }, []);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
+    setUrlState(e.target.value);
   };
 
   const clearUrl = () => {
     setUrl('');
+    setUrlState('');
     formUrlRef.current?.focus();
   };
 
