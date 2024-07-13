@@ -90,16 +90,16 @@ export default function Home() {
             onChange={onChange}
             value={url}
             type="text"
-            className="block w-full rounded-lg border border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+            className="block w-full rounded-lg border border-gray-200 px-4 py-3 pr-16 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
             placeholder="Please enter URL"
             autoComplete="off" // Disable autocomplete to prevent browser autofill
           />
           {url && (
             <div
-              className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer bg-white pl-2"
+              className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer bg-white pl-1"
               onClick={clearUrl}
             >
-              <div className="inline-flex items-center justify-center rounded bg-gray-50 px-3 py-1 text-sm font-medium text-gray-800 hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50">
+              <div className="inline-flex items-center justify-center rounded bg-gray-50 px-2 py-1 text-sm font-medium text-gray-800 hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50">
                 <p>Clear</p>
               </div>
             </div>
