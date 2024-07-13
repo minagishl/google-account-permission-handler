@@ -6,6 +6,7 @@ import { tv } from 'tailwind-variants';
 
 // Components
 import Container from '@/components/container';
+import Banner from '@/components/banner';
 
 const button = tv({
   base: 'inline-flex items-center justify-center gap-x-2 rounded-lg border px-4 py-3 text-sm disabled:pointer-events-none disabled:opacity-50',
@@ -136,6 +137,7 @@ export default function Home() {
             'Browse GitHub for usage instructions'}
         </button>
       )}
+      <Banner />
     </Container>
   );
 }
