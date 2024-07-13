@@ -6,6 +6,7 @@ import { tv } from 'tailwind-variants';
 
 // Components
 import Container from '@/components/container';
+import Announce from '@/components/announce';
 import Banner from '@/components/banner';
 
 const button = tv({
@@ -138,6 +139,7 @@ export default function Home() {
         </button>
       )}
       <Banner />
+      <Announce />
     </Container>
   );
 }
