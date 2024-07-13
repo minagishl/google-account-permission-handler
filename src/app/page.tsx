@@ -13,7 +13,7 @@ const button = tv({
     color: {
       primary: 'border-transparent bg-blue-600 text-white hover:bg-blue-700',
       secondary:
-        'border-gray-200 bg-white text-gray-800 hover:bg-gray-50 dark:bg-neutral-900 dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-800',
+        'border-gray-200 bg-white text-gray-800 hover:bg-gray-50 dark:bg-neutral-900 dark:text-white dark:border-neutral-400 dark:hover:bg-neutral-800',
     },
     font: {
       medium: 'font-medium',
@@ -91,7 +91,7 @@ export default function Home() {
             onChange={onChange}
             value={url}
             type="text"
-            className="block w-full rounded-lg border border-gray-200 px-4 py-3 pr-16 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+            className="block w-full rounded-lg border border-gray-200 px-4 py-3 pr-16 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-400 dark:bg-neutral-800 dark:text-white"
             placeholder="Please enter URL"
             autoComplete="off" // Disable autocomplete to prevent browser autofill
           />
