@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Container from '@/components/container';
 
@@ -8,7 +8,17 @@ const urlPattern = /^https:\/\/.*\.google\.com\/.+$/;
 
 export default function Home() {
   const formUrlRef = useRef<HTMLInputElement>(null);
+  const [url, setUrl] = useState('');
   const router = useRouter();
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(e.target.value);
+  };
+
+  const clearUrl = () => {
+    setUrl('');
+    formUrlRef.current?.focus();
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,16 +72,23 @@ export default function Home() {
         <div className="mb-3 relative">
           <input
             ref={formUrlRef}
+            onChange={onChange}
+            value={url}
             type="text"
             className="py-3 px-4 block w-full border-gray-200 border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
             placeholder="Please enter URL"
             autoComplete="off" // Disable autocomplete to prevent browser autofill
           />
-          <div className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer pl-2 bg-white">
-            <div className="py-1 px-3 inline-flex justify-center items-center text-sm font-medium rounded bg-gray-50 text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
-              <p>Clear</p>
+          {url && (
+            <div
+              className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer pl-2 bg-white"
+              onClick={clearUrl}
+            >
+              <div className="py-1 px-3 inline-flex justify-center items-center text-sm font-medium rounded bg-gray-50 text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
+                <p>Clear</p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <button
