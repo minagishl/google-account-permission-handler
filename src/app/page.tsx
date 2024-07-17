@@ -9,6 +9,7 @@ import { tv } from 'tailwind-variants';
 import Container from '@/components/container';
 import Announce from '@/components/announce';
 import Banner from '@/components/banner';
+import Button from '@/components/button';
 
 // Utils
 import checkUrl from '@/utils/checkUrl';
@@ -105,22 +106,23 @@ export default function Home() {
             </div>
           )}
         </div>
-
-        <button
+        <Button
           type="submit"
           disabled={clickButton}
-          className={button({ color: 'primary', font: 'semibold' })}
+          color="primary"
+          font="medium"
         >
           Open account switching screen
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           disabled={clickButton}
-          className={button({ color: 'secondary', font: 'medium' })}
+          color="secondary"
+          font="medium"
           onClick={handleSecondaryButtonClick}
         >
           Automatically opens in an authorized account
-        </button>
+        </Button>
       </form>
       {process.env.NEXT_PUBLIC_REDIRECT_HIDDEN !== 'true' && (
         <button
