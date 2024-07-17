@@ -45,16 +45,14 @@ export default function Home() {
   };
 
   const handleSecondaryButtonClick = () => {
-    const modifiedUrl = toViewUrl(url.replace(/\/u\/\d+\//, '/'));
-
     // Check if the URL is valid
-    if (!checkUrl(modifiedUrl)) {
+    if (!checkUrl(url)) {
       alert('The URL must begin with https:// and end with .google.com.');
       return;
     }
 
     setClickButton(true);
-    router.push(modifiedUrl);
+    router.push(toViewUrl(url));
   };
 
   const handleRedirect = () => {

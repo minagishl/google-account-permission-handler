@@ -1,8 +1,9 @@
 export default function toViewUrl(url: string): string {
+  // Remove any u/{number}/ pattern from the URL
+  url = url.replace(/\/u\/\d+\//, '/');
+
   const googleFormsPattern =
-    /https:\/\/docs\.google\.com\/forms\/d\/e\/([a-zA-Z0-9_-]+)/;
-  const googleEditPattern =
-    /https:\/\/docs\.google\.com\/forms\/d\/([a-zA-Z0-9_-]+)\/edit/;
+    /https:\/\/docs\.google\.com\/forms\/d\/e\/([a-zA-Z0-9_-]+)(\/(?:edit|formrestricted))?/;
 
   const match = url.match(googleFormsPattern);
   if (match) {
@@ -10,15 +11,9 @@ export default function toViewUrl(url: string): string {
     return generateViewUrl(id);
   }
 
-  const editMatch = url.match(googleEditPattern);
-  if (editMatch) {
-    const id = editMatch[1];
-    return generateViewUrl(id);
-  }
-
   return url;
 }
 
 function generateViewUrl(id: string): string {
-  return `https://docs.google.com/forms/d/${id}/viewform`;
+  return `https://docs.google.com/forms/d/e/${id}/viewform`;
 }
