@@ -1,5 +1,5 @@
 {
-  "name": "google-organization-account-permissions",
+  "name": "google-account-permission-handler",
   "version": "0.1.0",
   "private": true,
   "scripts": {

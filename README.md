@@ -1,4 +1,4 @@
-# Google Organization Account Permissions
+# Google Account Permission Handler
 
 This project can easily and automatically switch accounts when "Permissions Required" is displayed on Google Form, Google Drive, Google Spreadsheets, etc!
 
