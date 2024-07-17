@@ -1,8 +1,8 @@
 # Google Account Permission Handler
 
-This project can easily and automatically switch accounts when "Permissions Required" is displayed on Google Form, Google Drive, Google Spreadsheets, etc!
+This project can easily and automatically switch accounts when "You need permission" is displayed on Google Form, Google Drive, Google Spreadsheets, etc!
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`c3`](https://developers.cloudflare.com/pages/get-started/c3).
+Click [here](https://youtu.be/7hDCUyQ6xiQ) to see a sample video.
 
 ## Getting Started
 
