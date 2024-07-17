@@ -25,22 +25,22 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
-const CustomButton: React.FC<ButtonProps> = ({
+export default function Button({
   type,
   disabled,
   color,
   font,
   onClick,
   children,
-}) => (
-  <button
-    type={type}
-    disabled={disabled}
-    className={buttonStyle({ color, font })}
-    onClick={onClick}
-  >
-    {children}
-  </button>
-);
-
-export default CustomButton;
+}: ButtonProps) {
+  return (
+    <button
+      type={type}
+      disabled={disabled}
+      className={buttonStyle({ color, font })}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
