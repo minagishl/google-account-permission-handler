@@ -18,7 +18,7 @@ const buttonStyle = tv({
 
 interface ButtonProps {
   type: 'submit' | 'button';
-  disabled: boolean;
+  disabled?: boolean;
   color: 'primary' | 'secondary';
   font: 'medium' | 'semibold';
   onClick?: () => void;
@@ -27,7 +27,7 @@ interface ButtonProps {
 
 export default function Button({
   type,
-  disabled,
+  disabled = false,
   color,
   font,
   onClick,
