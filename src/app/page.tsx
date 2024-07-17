@@ -1,5 +1,6 @@
 'use client';
 
+// Packages
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { tv } from 'tailwind-variants';
@@ -8,6 +9,10 @@ import { tv } from 'tailwind-variants';
 import Container from '@/components/container';
 import Announce from '@/components/announce';
 import Banner from '@/components/banner';
+
+// Utils
+import checkUrl from '@/utils/checkUrl';
+import toViewUrl from '@/utils/toViewUrl';
 
 const button = tv({
   base: 'inline-flex items-center justify-center gap-x-2 rounded-lg border px-4 py-3 text-sm disabled:pointer-events-none disabled:opacity-50',
@@ -24,8 +29,6 @@ const button = tv({
   },
 });
 
-const urlPattern = /^https:\/\/.*\.google\.com\/.+$/;
-
 export default function Home() {
   const [clickButton, setClickButton] = useState<boolean>(false);
   const [url, setUrl] = useState<string>('');
@@ -40,47 +43,37 @@ export default function Home() {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the form from submitting
 
-    if (!urlPattern.test(url)) {
+    // Check if the URL is valid
+    if (checkUrl(url)) {
       alert('The URL must begin with https:// and end with .google.com.');
       return;
     }
 
     setClickButton(true);
 
-    const encodedUrl = encodeURIComponent(transformGoogleFormsUrl(url));
+    const encodedUrl = encodeURIComponent(toViewUrl(url));
     const newUrl = `https://accounts.google.com/AccountChooser?continue=${encodedUrl}`;
     router.push(newUrl);
   };
 
   const handleSecondaryButtonClick = () => {
-    const modifiedUrl = transformGoogleFormsUrl(url.replace(/\/u\/\d+\//, '/'));
+    const modifiedUrl = toViewUrl(url.replace(/\/u\/\d+\//, '/'));
 
-    if (!urlPattern.test(modifiedUrl)) {
+    // Check if the URL is valid
+    if (checkUrl(modifiedUrl)) {
       alert('The URL must begin with https:// and end with .google.com.');
       return;
     }
 
     setClickButton(true);
-
     router.push(modifiedUrl);
   };
 
   const handleRedirect = () => {
     router.push(process.env.NEXT_PUBLIC_REDIRECT_URL ?? '/');
   };
-
-  function transformGoogleFormsUrl(url: string): string {
-    const googleFormsPattern =
-      /https:\/\/docs\.google\.com\/forms\/d\/e\/([a-zA-Z0-9_-]+)/;
-    const match = url.match(googleFormsPattern);
-    if (match) {
-      const id = match[1];
-      return `https://docs.google.com/forms/d/e/${id}/viewform`;
-    }
-    return url;
-  }
 
   return (
     <Container>
