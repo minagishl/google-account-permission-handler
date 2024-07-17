@@ -47,7 +47,7 @@ export default function Home() {
     e.preventDefault(); // Prevent the form from submitting
 
     // Check if the URL is valid
-    if (checkUrl(url)) {
+    if (!checkUrl(url)) {
       alert('The URL must begin with https:// and end with .google.com.');
       return;
     }
@@ -63,7 +63,7 @@ export default function Home() {
     const modifiedUrl = toViewUrl(url.replace(/\/u\/\d+\//, '/'));
 
     // Check if the URL is valid
-    if (checkUrl(modifiedUrl)) {
+    if (!checkUrl(modifiedUrl)) {
       alert('The URL must begin with https:// and end with .google.com.');
       return;
     }
