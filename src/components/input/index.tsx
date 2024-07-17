@@ -6,7 +6,7 @@ interface UrlInputProps {
 
 export default function Input({ url, onChange, clearUrl }: UrlInputProps) {
   return (
-    <div className="relative mb-3">
+    <div>
       <input
         tabIndex={1}
         onChange={onChange}

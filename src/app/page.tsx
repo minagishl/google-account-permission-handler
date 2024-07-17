@@ -67,7 +67,9 @@ export default function Home() {
         className="flex w-full max-w-md flex-col space-y-4"
         onSubmit={handleSubmit}
       >
-        <Input url={url} onChange={onChange} clearUrl={clearUrl} />
+        <div className="relative mb-3">
+          <Input url={url} onChange={onChange} clearUrl={clearUrl} />
+        </div>
         <Button
           type="submit"
           disabled={clickButton}

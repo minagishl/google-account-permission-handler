@@ -80,10 +80,6 @@ export default function Home() {
     }
   };
 
-  const handleSecondaryButtonClick = () => {
-    router.push('/');
-  };
-
   const handleRedirect = () => {
     router.push(process.env.NEXT_PUBLIC_REDIRECT_URL ?? '/');
   };
@@ -97,14 +93,6 @@ export default function Home() {
         <Input url={url} onChange={onChange} clearUrl={clearUrl} />
         <Button type="submit" color="primary" font="medium">
           Convert and share the URL
-        </Button>
-        <Button
-          type="button"
-          color="secondary"
-          font="medium"
-          onClick={handleSecondaryButtonClick}
-        >
-          Go to the dedicated conversion page
         </Button>
       </form>
       {process.env.NEXT_PUBLIC_REDIRECT_HIDDEN !== 'true' && (
