@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-// Packages
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 // Components
 import Container from '@/components/container';
@@ -15,10 +15,11 @@ import Input from '@/components/input';
 import checkUrl from '@/utils/checkUrl';
 import toViewUrl from '@/utils/toViewUrl';
 
-export default function Home() {
-  const [clickButton, setClickButton] = useState<boolean>(false);
-  const [url, setUrl] = useState<string>('');
+function Component() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [clickButton, setClickButton] = useState<boolean>(false);
+  const [url, setUrl] = useState<string>(searchParams.get('url') ?? '');
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
@@ -98,5 +99,13 @@ export default function Home() {
       <Banner />
       <Announce />
     </Container>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <Component />
+    </Suspense>
   );
 }

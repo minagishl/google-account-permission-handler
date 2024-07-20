@@ -25,3 +25,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 3. Click on the "Open account switching screen" button.
 
 > **Note:** If you are already signed in to an authorized Google Account, simply click the "Automatically opens in an authorized account" button
+
+## Bookmark
+
+This application can also be run from a bookmark (recommended).  
+Click [here](https://google-account-permission-handler.pages.dev/bookmark) to go to the Add Bookmark page
