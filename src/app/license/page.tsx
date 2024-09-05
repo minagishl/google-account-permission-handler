@@ -8,7 +8,9 @@ export default function License() {
 
   const handle = () => {
     router.push(
-      `${process.env.NEXT_PUBLIC_GITHUB_URL}/blob/main/LICENSE` ?? '/'
+      process.env.NEXT_PUBLIC_GITHUB_URL
+        ? `${process.env.NEXT_PUBLIC_GITHUB_URL}/blob/main/LICENSE`
+        : '/'
     );
   };
 
