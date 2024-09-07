@@ -25,13 +25,6 @@ function Component() {
   const [url, setUrl] = useState<string>(searchParams.get('url') ?? '');
   const { t, changeLocale } = useTranslate();
 
-  // Set the locale from localStorage
-  useEffect(() => {
-    const locale = localStorage.getItem('locale') ?? 'en';
-    localStorage.setItem('locale', locale);
-    changeLocale(locale);
-  }, [changeLocale]);
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
   };

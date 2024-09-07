@@ -9,10 +9,20 @@ export const useTranslate = () => {
   const [currentLocale, setCurrentLocale] = useState(en); // Default to English
 
   useEffect(() => {
-    if (locale && locales[locale as keyof typeof locales]) {
-      setCurrentLocale(locales[locale as keyof typeof locales]);
+    // Get the browser's language
+    const browserLocale = navigator.language.split('-')[0];
+
+    if (browserLocale && locales[browserLocale as keyof typeof locales]) {
+      setLocale(browserLocale);
     } else {
-      setCurrentLocale(en); // Fallback to English if locale is not supported
+      setLocale('en'); // Default to English
+    }
+  }, []);
+
+  useEffect(() => {
+    // Update the locale when `locale` state changes
+    if (locales[locale as keyof typeof locales]) {
+      setCurrentLocale(locales[locale as keyof typeof locales]);
     }
   }, [locale]);
 
@@ -20,7 +30,7 @@ export const useTranslate = () => {
     return currentLocale[key] || key; // Returns key if key not found
   };
 
-  const changeLocale = (newLocale: string) => {
+  const changeLocale = (newLocale: string): void => {
     setLocale(newLocale);
   };
 
