@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState, Suspense } from 'react';
 import { useRouter } from 'next/navigation';
@@ -15,11 +15,15 @@ import Input from '@/components/input';
 import checkUrl from '@/utils/checkUrl';
 import toViewUrl from '@/utils/toViewUrl';
 
+// Translate
+import { useTranslate } from '@/translate';
+
 function Component() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [clickButton, setClickButton] = useState<boolean>(false);
   const [url, setUrl] = useState<string>(searchParams.get('url') ?? '');
+  const { t } = useTranslate();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
@@ -75,7 +79,7 @@ function Component() {
           color="primary"
           font="medium"
         >
-          Open account switching screen
+          {t('Open account switching screen')}
         </Button>
         <Button
           type="button"
@@ -84,7 +88,7 @@ function Component() {
           font="medium"
           onClick={handleSecondaryButtonClick}
         >
-          Automatically opens in an authorized account
+          {t('Automatically opens in an authorized account')}
         </Button>
       </form>
       {process.env.NEXT_PUBLIC_REDIRECT_HIDDEN !== 'true' && (
@@ -93,7 +97,7 @@ function Component() {
           onClick={handleRedirect}
         >
           {process.env.NEXT_PUBLIC_REDIRECT_TEXT ??
-            'Browse GitHub for usage instructions'}
+            t('Browse GitHub for usage instructions')}
         </button>
       )}
       <Banner />
