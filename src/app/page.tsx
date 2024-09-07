@@ -71,7 +71,12 @@ function Component() {
         onSubmit={handleSubmit}
       >
         <div className="relative mb-3">
-          <Input url={url} onChange={onChange} clearUrl={clearUrl} />
+          <Input
+            url={url}
+            placeholder={t('Please enter URL')}
+            onChange={onChange}
+            clearUrl={clearUrl}
+          />
         </div>
         <Button
           type="submit"

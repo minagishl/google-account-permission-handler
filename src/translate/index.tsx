@@ -4,8 +4,6 @@ import ja from './locales/ja';
 
 const locales = { en, ja };
 
-type LocaleKeys = keyof typeof en; // Assumption that all languages have the same key structure
-
 export const useTranslate = () => {
   const [locale, setLocale] = useState<string>('en');
   const [currentLocale, setCurrentLocale] = useState(en); // Default to English
@@ -18,7 +16,7 @@ export const useTranslate = () => {
     }
   }, [locale]);
 
-  const t = (key: LocaleKeys) => {
+  const t = (key: string): string => {
     return currentLocale[key] || key; // Returns key if key not found
   };
 

@@ -90,7 +90,12 @@ export default function Home() {
         className="flex w-full max-w-md flex-col space-y-4"
         onSubmit={handleSubmit}
       >
-        <Input url={url} onChange={onChange} clearUrl={clearUrl} />
+        <Input
+          url={url}
+          placeholder="Please enter URL"
+          onChange={onChange}
+          clearUrl={clearUrl}
+        />
         <Button type="submit" color="primary" font="medium">
           Convert and share the URL
         </Button>
