@@ -12,7 +12,6 @@ type Props = Readonly<{
 
 export default async function Home({ params }: Props) {
   const { lang } = params;
-  console.log('lang:', lang);
   const { t } = await useTranslation({ lang });
 
   const items = {
