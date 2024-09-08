@@ -20,9 +20,8 @@ const ja: Locale = {
     'Please enter URL': 'URLを入力してください',
     'Open account switching screen': 'アカウント切り替え画面を開く',
     'Automatically opens in an authorized account':
-      '承認されたアカウントで自動的に開きます',
-    'Browse GitHub for usage instructions':
-      '使用方法についてはGitHubを参照してください',
+      '承認されたアカウントで自動的に開く',
+    'Browse GitHub for usage instructions': '使用方法についてGitHubを閲覧する',
   },
 };
 
