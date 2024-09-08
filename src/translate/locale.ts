@@ -80,6 +80,51 @@ const ru: Locale = {
   },
 };
 
-const locale = { en, ja, fr, de, zh, es, ru };
+const it: Locale = {
+  translation: {
+    'Please enter URL': "Si prega di inserire l'URL",
+    'Open account switching screen': 'Aprire la schermata di cambio account',
+    'Automatically opens in an authorized account':
+      'Si apre automaticamente in un account autorizzato',
+    'Browse GitHub for usage instructions':
+      "Controlla GitHub per le istruzioni d'uso",
+  },
+};
+
+const pt: Locale = {
+  translation: {
+    'Please enter URL': 'Por favor, insira a URL',
+    'Open account switching screen': 'Abrir a tela de troca de conta',
+    'Automatically opens in an authorized account':
+      'Abre automaticamente em uma conta autorizada',
+    'Browse GitHub for usage instructions':
+      'Veja o GitHub para instruções de uso',
+  },
+};
+
+const nl: Locale = {
+  translation: {
+    'Please enter URL': 'Voer de URL in',
+    'Open account switching screen':
+      'Open het scherm voor het wisselen van account',
+    'Automatically opens in an authorized account':
+      'Wordt automatisch geopend in een geautoriseerd account',
+    'Browse GitHub for usage instructions':
+      'Bekijk GitHub voor gebruiksaanwijzingen',
+  },
+};
+
+const ko: Locale = {
+  translation: {
+    'Please enter URL': 'URL을 입력하십시오',
+    'Open account switching screen': '계정 전환 화면 열기',
+    'Automatically opens in an authorized account':
+      '승인된 계정에서 자동으로 열립니다',
+    'Browse GitHub for usage instructions':
+      '사용 지침을 보려면 GitHub를 탐색하십시오',
+  },
+};
+
+const locale = { en, ja, fr, de, zh, es, ru, it, pt, nl, ko };
 
 export default locale;
