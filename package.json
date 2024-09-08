@@ -14,9 +14,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "i18next": "^23.14.0",
+    "i18next-resources-to-backend": "^1.2.1",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-i18next": "^15.0.1",
     "tailwind-variants": "^0.2.1"
   },
   "devDependencies": {

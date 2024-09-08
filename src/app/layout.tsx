@@ -1,27 +1,20 @@
-import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Google Account Permission Handler',
-  description:
-    'Application to display correctly when displayed as only an organization account in Google Form, etc.',
-};
+import type { Viewport } from 'next';
+import RootLayout, { type RootLayoutProps } from './[lang]/layout';
+import { defaultLanguage } from '@/translate';
 
 export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-export default function RootLayout({
+type DefaultRootLayoutProps = Omit<RootLayoutProps, 'params'>;
+
+export default async function DefaultIndexPage({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+}: DefaultRootLayoutProps) {
+  return await RootLayout({
+    params: {
+      lang: defaultLanguage,
+    },
+    children,
+  });
 }
