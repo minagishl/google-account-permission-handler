@@ -1,6 +1,12 @@
-import type { Viewport } from 'next';
+import type { Viewport, Metadata } from 'next';
 import RootLayout, { type RootLayoutProps } from './[lang]/layout';
 import { defaultLanguage } from '@/translate';
+
+export const metadata: Metadata = {
+  title: 'Google Account Permission Handler',
+  description:
+    'Application to display correctly when displayed as only an organization account in Google Form, etc.',
+};
 
 export const viewport: Viewport = {
   maximumScale: 1,
