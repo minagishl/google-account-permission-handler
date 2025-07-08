@@ -27,23 +27,15 @@ interface ButtonProps {
   class?: string;
 }
 
-export default function Button({
-  type,
-  disabled = false,
-  color,
-  font,
-  onClick,
-  children,
-  class: className,
-}: ButtonProps) {
+export default function Button(props: ButtonProps) {
   return (
     <button
-      type={type}
-      disabled={disabled}
-      class={buttonStyle({ color, font, className })}
-      onClick={onClick}
+      type={props.type}
+      disabled={props.disabled ?? false}
+      class={buttonStyle({ color: props.color, font: props.font, className: props.class })}
+      onClick={() => props.onClick?.()}
     >
-      {children}
+      {props.children}
     </button>
   );
 }

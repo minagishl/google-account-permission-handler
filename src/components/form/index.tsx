@@ -20,7 +20,7 @@ type Props = Readonly<{
   };
 }>;
 
-export default function Form({ items }: Props) {
+export default function Form(props: Props) {
   const [clickButton, setClickButton] = createSignal<boolean>(false);
   const [url, setUrl] = createSignal<string>('');
 
@@ -73,7 +73,7 @@ export default function Form({ items }: Props) {
         <div class="relative mb-3">
           <Input
             url={url()}
-            placeholder={items.placeholder}
+            placeholder={props.items.placeholder}
             onChange={onChange}
             clearUrl={clearUrl}
           />
@@ -85,7 +85,7 @@ export default function Form({ items }: Props) {
           font="medium"
           class="mt-4"
         >
-          {items.button1}
+          {props.items.button1}
         </Button>
         <Button
           type="button"
@@ -94,14 +94,14 @@ export default function Form({ items }: Props) {
           font="medium"
           onClick={handleSecondaryButtonClick}
         >
-          {items.button2}
+          {props.items.button2}
         </Button>
       </form>
       <button
         class="px-2 text-sm font-medium text-blue-600 decoration-2 hover:underline dark:text-blue-500"
         onClick={handleRedirect}
       >
-        {items.bottomText}
+        {props.items.bottomText}
       </button>
       <Banner />
       <Announce />
