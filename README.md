@@ -1,28 +1,34 @@
-## Usage
+# Google Account Permission Handler
+
+This project can easily and automatically switch accounts when "You need permission" is displayed on Google Form, Google Drive, Google Spreadsheets, etc!
+
+Click [here](https://youtu.be/7hDCUyQ6xiQ) to see a sample video.
+
+## Getting Started
+
+First, run the development server:
 
 ```bash
-$ npm install # or pnpm install or yarn install
+pnpm run dev
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
 
-## Available Scripts
+## Author
 
-In the project directory, you can run:
+This source code is created and managed by one person.
 
-### `npm run dev`
+- Minagishl ([@minagishl](https://github.com/minagishl))
 
-Runs the app in the development mode.<br>
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+## How to use
 
-### `npm run build`
+1. Copy the URL of the Google Form, Google Drive, Google Spreadsheet, etc. that displays "Permission Required" or "You need permission"
+2. Paste the URL into the input field
+3. Click on the "Open account switching screen" button.
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+> **Note:** If you are already signed in to an authorized Google Account, simply click the "Automatically opens in an authorized account" button
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## License
 
-## Deployment
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Learn more about deploying your application with the [documentations](https://vite.dev/guide/static-deploy.html)
