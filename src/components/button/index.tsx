@@ -1,4 +1,5 @@
 import { tv } from 'tailwind-variants';
+import type { JSX } from 'solid-js';
 
 // Tailwind Variants for button
 const buttonStyle = tv({
@@ -22,7 +23,8 @@ interface ButtonProps {
   color: 'primary' | 'secondary';
   font: 'medium' | 'semibold';
   onClick?: () => void;
-  children: React.ReactNode;
+  children: JSX.Element;
+  class?: string;
 }
 
 export default function Button({
@@ -32,12 +34,13 @@ export default function Button({
   font,
   onClick,
   children,
+  class: className,
 }: ButtonProps) {
   return (
     <button
       type={type}
       disabled={disabled}
-      className={buttonStyle({ color, font })}
+      class={buttonStyle({ color, font, className })}
       onClick={onClick}
     >
       {children}
