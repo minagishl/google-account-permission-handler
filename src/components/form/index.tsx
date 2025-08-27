@@ -2,8 +2,6 @@ import { createSignal } from 'solid-js';
 
 // Components
 import Container from '@/components/container';
-import Announce from '@/components/announce';
-import Banner from '@/components/banner';
 import Button from '@/components/button';
 import Input from '@/components/input';
 
@@ -103,8 +101,6 @@ export default function Form(props: Props) {
       >
         {props.items.bottomText}
       </button>
-      <Banner />
-      <Announce />
     </Container>
   );
 }
