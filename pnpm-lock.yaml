@@ -11,9 +11,12 @@ importers:
       solid-js:
         specifier: ^1.9.9
         version: 1.9.9
+      tailwind-merge:
+        specifier: ^2.5.2
+        version: 2.6.0
       tailwind-variants:
         specifier: ^3.1.0
-        version: 3.1.0(tailwind-merge@3.0.2)(tailwindcss@4.1.12)
+        version: 3.1.0(tailwind-merge@2.6.0)(tailwindcss@4.1.12)
     devDependencies:
       '@eslint/js':
         specifier: ^9.34.0
@@ -1290,8 +1293,8 @@ packages:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
 
-  tailwind-merge@3.0.2:
-    resolution: {integrity: sha512-l7z+OYZ7mu3DTqrL88RiKrKIqO3NcpEO8V/Od04bNpvk0kiIFndGEoqfuzvj4yuhRkHKjRkII2z+KS2HfPcSxw==}
+  tailwind-merge@2.6.0:
+    resolution: {integrity: sha512-P+Vu1qXfzediirmHOC3xKGAYeZtPcV9g76X+xg2FD4tYgR71ewMA35Y3sCz3zhiN/dwefRpJX0yBcgwi1fXNQA==}
 
   tailwind-variants@3.1.0:
     resolution: {integrity: sha512-ieiYaEfUr+sNhw/k++dosmZfVA4VIG5bV+G1eGdJSC4FcflqQv0iSIlOLj/RbzRuTu/VrIiNSlwh1esBM3BXUg==}
@@ -2601,14 +2604,13 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  tailwind-merge@3.0.2:
-    optional: true
+  tailwind-merge@2.6.0: {}
 
-  tailwind-variants@3.1.0(tailwind-merge@3.0.2)(tailwindcss@4.1.12):
+  tailwind-variants@3.1.0(tailwind-merge@2.6.0)(tailwindcss@4.1.12):
     dependencies:
       tailwindcss: 4.1.12
     optionalDependencies:
-      tailwind-merge: 3.0.2
+      tailwind-merge: 2.6.0
 
   tailwindcss@4.1.12: {}
 
