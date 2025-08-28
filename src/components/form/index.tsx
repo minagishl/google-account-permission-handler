@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js';
+import { createSignal, onMount } from 'solid-js';
 
 // Components
 import Container from '@/components/container';
@@ -21,6 +21,14 @@ type Props = Readonly<{
 export default function Form(props: Props) {
   const [clickButton, setClickButton] = createSignal<boolean>(false);
   const [url, setUrl] = createSignal<string>('');
+
+  onMount(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlParam = urlParams.get('url');
+    if (urlParam) {
+      setUrl(decodeURIComponent(urlParam));
+    }
+  });
 
   const onChange = (e: Event) => {
     const target = e.target as HTMLInputElement;

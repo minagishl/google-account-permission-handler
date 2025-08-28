@@ -21,6 +21,7 @@ export default [
         document: 'readonly',
         window: 'readonly',
         alert: 'readonly',
+        URLSearchParams: 'readonly',
         URL: 'readonly',
         Event: 'readonly',
         HTMLInputElement: 'readonly',
